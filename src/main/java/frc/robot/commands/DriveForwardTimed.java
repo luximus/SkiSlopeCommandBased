@@ -10,21 +10,28 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Gyroscope;
 
+/**
+ * Drive the robot exactly forward for the given number of seconds using a PID feedback system.
+ */
 public class DriveForwardTimed extends CommandBase {
+
+  private static final double PID_POSITION_GAIN = 0.0;
+  private static final double PID_INTEGRAL_GAIN = 0.0;
+  private static final double PID_DERIVATIVE_GAIN = 0.0;
+
   private Drivetrain drivetrain;
   private Gyroscope gyro;
-  private PIDController pidController;
+  private PIDController pidController = new PIDController(PID_POSITION_GAIN, PID_INTEGRAL_GAIN, PID_DERIVATIVE_GAIN);
   private double forwardSpeed;
   private double timeSeconds;
 
   private Timer timer = new Timer();
 
   /** Creates a new DriveForwardTimed. */
-  public DriveForwardTimed(Drivetrain drivetrain, Gyroscope gyro, double positionGain, double integralGain, double derivativeGain, double forwardSpeed, double timeSeconds) {
+  public DriveForwardTimed(Drivetrain drivetrain, Gyroscope gyro, double forwardSpeed, double timeSeconds) {
     this.drivetrain = drivetrain;
     this.gyro = gyro;
     addRequirements(drivetrain, gyro);
-    this.pidController = new PIDController(positionGain, integralGain, derivativeGain);
     this.forwardSpeed = forwardSpeed;
     this.timeSeconds = timeSeconds;
   }

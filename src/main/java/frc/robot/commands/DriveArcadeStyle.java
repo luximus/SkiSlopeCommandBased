@@ -9,6 +9,12 @@ import java.util.function.DoubleSupplier;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 
+/**
+ * Drive the robot, arcade style, with the given suppliers for linear and rotational inputs.
+ * 
+ * @author Ivan Post
+ * @version 0.0.1
+ */
 public class DriveArcadeStyle extends CommandBase {
 
   private Drivetrain drivetrain;

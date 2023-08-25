@@ -7,18 +7,22 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.GateArm;
 
-public class MoveGate extends CommandBase {
+/**
+ * Move the gate to a set angle.
+ */
+public class MoveGateManually extends CommandBase {
 
   private static final double COMPLETION_POSITION_TOLERANCE = 32.0;
   private static final double COMPLETION_VELOCITY_TOLERANCE = 4.0;
 
   private GateArm gateArm;
-  private GateArm.Position targetAngle;
-  
+  private double targetPosition;
+
   /** Creates a new MoveGate. */
-  public MoveGate(GateArm gateArm, GateArm.Position targetAngle) {
+  public MoveGateManually(GateArm gateArm, double targetPosition) {
     this.gateArm = gateArm;
-    this.targetAngle = targetAngle;
+    addRequirements(gateArm);
+    this.targetPosition = targetPosition;
   }
 
   // Called when the command is initially scheduled.
@@ -28,7 +32,7 @@ public class MoveGate extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    gateArm.moveTo(targetAngle);
+    gateArm.moveTo(targetPosition);
   }
 
   // Called once the command ends or is interrupted.
