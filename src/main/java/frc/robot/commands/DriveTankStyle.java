@@ -9,6 +9,12 @@ import java.util.function.DoubleSupplier;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 
+/**
+ * Drive the robot, tank style, with the given suppliers for left and right inputs.
+ * 
+ * @author Ivan Post
+ * @version 0.0.1
+ */
 public class DriveTankStyle extends CommandBase {
   public static interface AxisValueProducer {
     public double get();
